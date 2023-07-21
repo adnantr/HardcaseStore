@@ -1,0 +1,44 @@
+﻿@model List<About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="contactus">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="title">
+                    <h2>Hakkımızda</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="about">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aboutimg">
+                        <h3>Hakkımızda</h3>
+                        <p>@item.Text</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="aboutimg">
+                        <figure><img src="~/alkutay/images/@item.Image" /></figure>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contactus">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="title">
+                    <h2>Bizimle İletişime Geçin </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="row padddd">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 ">
+                    <div class="title">
+                        <br><br><br>
+                        <h3 class="text-bg"><img src="~/alkutay/icon/home.svg" /> @item.Address </h3>
+                    </div>
+                </div>
+                <div class="col-6 ">
+                    <div class="title">
+                        <br><br><br>
+                        <h3><img src="~/alkutay/icon/mobile.svg" /> @item.PhoneNumber</h3>
+                        <h3><img src="~/alkutay/icon/email.svg" /> @item.Email</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+}
+<!-- map -->
+    <div class="container-fluid padddd">
+
+        <div class="row mx-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 padddd">
+                    <div class="map_section">
+                        <div id="map">
+                            <iframe src="@item.Map" class="col-xl-12 col-lg-12" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 padddd">
+                <form method="post" class="main_form">
+                    <div class="row">
+                        <input type="hidden" name="Id" />
+                        <input type="hidden" name="IsRead" value="False" />
+                    <input type="hidden" name="UserIp" id="ipAddress"/>
+                        <input type="hidden" name="DateTime" value="@DateTime.Now" />
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <input  class="form-control" placeholder="İsim" type="text" name="Name">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <input class="form-control" placeholder="Email" type="text" name="Email">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <input  class="form-control" placeholder="+90(___)______" type="text" name="PhoneNumber">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <textarea class="textarea" placeholder="Mesajınız" type="text" name="MessageText"></textarea>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <button type="submit" asp-controller="Message" asp-action="AddMessage" class="send">Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    // Kullanıcının IP adresini almak için JavaScript kullanımı
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => document.getElementById('ipAddress').value = data.ip);
+</script>

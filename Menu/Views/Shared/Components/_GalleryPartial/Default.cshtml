@@ -1,0 +1,29 @@
+﻿@model List<Gallery>
+
+<div class="trending">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="title">
+                    <h2>Kullanım <strong class="black">Alanları</strong></h2>
+                </div>
+            </div>
+        </div>
+        
+            <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 @item.Style">
+                    <div class="trending-box">
+                        <figure>
+                            <img src="~/alkutay/images/@item.Image" width="500" height="500"/>
+                        </figure>
+                        @*<h3>@item.Text</h3>*@
+                    </div>
+                </div>
+            }
+            </div>
+        
+        
+    </div>
+</div>

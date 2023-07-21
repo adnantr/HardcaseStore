@@ -1,0 +1,36 @@
+﻿@model List<Product>
+@{
+    Layout = null;
+}
+<div class="brand">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Öne Çıkan <strong class="black">Ürünler</strong></h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="brand-bg">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                    <a asp-controller="Produce" asp-action="Detail" asp-route-Id="@item.Id">
+                    <div class="brand-box">
+                             <i>
+                                <img src="~/alkutay/images/@item.Image" />
+                             </i>
+                        <h3>@item.Name</h3>
+                    </div>
+                    </a>
+                </div>
+            }
+           
+        </div>
+    </div>
+</div>

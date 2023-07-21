@@ -1,0 +1,62 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Ürün Güncelleme</h1>
+
+<form asp-controller="Product" asp-action="UpdateProduct" method="post" class="form-control" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group row mb-3">
+        <label>Ürün İsmi</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group row mb-3">
+        <label>Ürün Açıklama</label>
+        <textarea asp-for="Description" placeholder="Ürün tanım"  class="form-control" id="myTextarea"></textarea>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label>Ürün Fiyat ₺</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Kategori</label>
+        <select asp-for="CategoryId" class="form-select" id="inputGroupSelect01">
+            <option selected>Kategori Seçiniz</option>
+            @foreach (var item in ViewBag.categorylist)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <input type="file" asp-for="Image" class="form-control" id="inputGroupFile01">
+    </div>
+    <div class="input-group mb-3">
+        <input type="file" asp-for="ImageOne" class="form-control" id="inputGroupFile02">
+    </div>
+    <div class="input-group mb-3">
+        <input type="file" asp-for="ImageTwo" class="form-control" id="inputGroupFile03">
+    </div>
+
+    <button type="submit" class="btn btn-success ">Güncelle</button>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" role="button">Geri Dön</a>
+
+</form>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: '#myTextarea'
+    });
+</script>
+
+

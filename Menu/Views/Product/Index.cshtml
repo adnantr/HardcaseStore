@@ -1,0 +1,62 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<a href="/Product/AddProduct" class="btn btn-outline-primary"> Yeni Ürün Girişi</a>
+<br />
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ürün İsmi</th>
+                <th>Kategori</th>
+                <th>Açıklama</th>
+                <th>Görsel 1</th>
+                <th>Görsel 2</th>
+                <th>Görsel 3</th>
+                <th>Fiyat</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Categories.Name</td>
+                <td id="td3dot">@Html.Raw(@item.Description)</td>
+                <td><img src="~/alkutay/images/@item.Image" width="50" height="50" /></td>
+                <td><img src="~/alkutay/images/@item.ImageOne" width="50" height="50" /></td>
+                <td><img src="~/alkutay/images/@item.ImageTwo" width="50" height="50" /></td>
+                <td>@item.Price</td>
+                <td><a href="/Product/DeleteProduct/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                <td><a href="/Product/UpdateProduct/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+            </tr>
+        }
+            
+
+
+        </tbody>
+    </table>
+
+    <style>
+        .td3dot{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    </style>

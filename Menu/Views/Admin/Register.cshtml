@@ -1,0 +1,51 @@
+﻿@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<main class="form-signin w-100 m-auto">
+    <form method="post">
+        <img class="mb-4" src="~/theme/assets/imgs/logo.png" alt="" width="111" height="85">
+        <h1 class="h3 mb-3 fw-normal">Kayıt Ekranı</h1>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" asp-for="Name" placeholder="İsim">
+            <label for="floatingInput">Adı</label>
+            @Html.ValidationMessage("Name")
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" asp-for="SurName" placeholder="Soyisim">
+            <label for="floatingInput">Soyadı</label>
+            @Html.ValidationMessage("SurName")
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" asp-for="UserName" placeholder="admin">
+            <label for="floatingInput">Kullanıcı Adı</label>
+            @Html.ValidationMessage("UserName")
+        </div>
+        <div class="form-floating">
+            <input type="mail" class="form-control" id="floatingInput" asp-for="Mail" placeholder="admin@admin.com.tr">
+            <label for="floatingInput">Mail</label>
+            @Html.ValidationMessage("Mail")
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="Password">
+            <label for="floatingPassword">Şifre</label>
+            @Html.ValidationMessage("Password")
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" asp-for="ComfirmPassword" placeholder="Password">
+            <label for="floatingPassword">Şifre Tekrar</label>
+            @Html.ValidationMessage("ComfirmPassword")
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
+    </form>
+</main>
+
+
+

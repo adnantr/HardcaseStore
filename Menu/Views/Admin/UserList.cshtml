@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AppUser> 
+@{
+    ViewData["Title"] = "User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Kullanıcı Listesi</h1>
+<br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="bi bi-exclamation-octagon"></i>
+        @TempData["message"]
+    </div>
+}
+
+
+<br />
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Mail</th>
+            <th>EpostaOnay</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Email</td>
+                <td>
+
+                    @if (item.EmailConfirmed == true)
+                    {
+                        
+                        <input type="hidden" id="EmailConfirmed" name="EmailConfirmed" value="False">
+                        <a href="/Admin/EmailConfirm/@item.UserName" value="False" class="btn btn-outline-danger">Engelle</a>
+                    }
+                    else
+                    {
+
+                        <input type="hidden" id="EmailConfirmed" name="EmailConfirmed" value="True">
+                        <a href="/Admin/EmailConfirm/@item.UserName" value="True" class="btn btn-success">Aktif Yap</a>
+                        
+                    }
+
+                    
+                </td>
+                <td><a href="/Admin/DeleteUser/@item.UserName" class="btn btn-outline-danger">Sil</a></td>
+@*               <td><a href="/Product/UpdateProduct/@item.Id" class="btn btn-outline-success">Güncelle</a></td>*@
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+

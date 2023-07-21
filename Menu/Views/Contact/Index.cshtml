@@ -1,0 +1,57 @@
+﻿@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+    <a href="/Contact/AddContact" class="btn btn-outline-primary"> Yeni İletişim Girişi</a>
+}
+
+<h4 class="card-title"> İletişim </h4>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Adres</th>
+        <th>Telefon Numarası</th>
+        <th>Email</th>
+        <th>Harita link</th>
+        <th>Kısa Bilgi</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>
+                @item.Address
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+            <td >
+                @item.Email
+            </td>
+            <td >
+                <iframe src="@item.Map" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                
+            </td>
+            <td>
+                @item.Info
+            </td>
+            <td>
+                <a href="/Contact/DeleteContact/@item.id" class="btn btn-outline-danger">Sil</a>
+            </td>
+            <td>
+                <a href="/Contact/UpdateContact/@item.id" class="btn btn-outline-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+

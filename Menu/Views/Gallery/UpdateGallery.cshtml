@@ -1,0 +1,38 @@
+﻿@using AlkutayUI.Models
+@model Gallery
+@{
+    ViewData["Title"] = "UpdateGallery";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Galeri Fotoğrafı Güncelleme</h1>
+<br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="bi bi-exclamation-octagon"></i>
+        @TempData["message"]
+    </div>
+}
+<form method="post" asp-controller="Gallery" asp-action="UpdateGallery" enctype="multipart/form-data">
+    <br />
+    @Html.Label("Görsel")<br />
+    <span asp-validation-for="Image" class="text-danger"></span>
+    <div class="input-group mb-3">
+        <input type="file" asp-for="Image" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </div>
+    <span asp-validation-for="Text" class="text-danger"></span>
+    <div class="form-group row mb-3">
+        <input asp-for="Text" placeholder="Görsel İsmi" class="form-control" />
+    </div>
+    <div class="form-group row mb-3">
+        <input asp-for="Style" placeholder="Stil kodu" class="form-control" />
+        <p class="text-success">*Görselin daha aşağıda durmasını istiyorsanız margitop yazınız istemiyorsanız boş bırakın.</p>
+    </div>
+    <br />
+
+    <button class="btn btn-outline-success">Güncelle</button>
+    <a asp-controller="Gallery" asp-action="Index" class="btn btn-secondary" role="button">Geri Dön</a>
+</form>
+

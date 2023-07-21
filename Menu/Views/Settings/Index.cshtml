@@ -1,0 +1,32 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcı Ayarları</h1>
+
+<form method="post">
+    @Html.Label("Adınız")
+    <input type="text" asp-for="Name" class="form-control" />
+    @Html.ValidationMessage("Name")
+    <br />
+    @Html.Label("Soyadınız")
+    <input type="text" asp-for="SurName" class="form-control" />
+    @Html.ValidationMessage("SurName")
+    <br />
+    @Html.Label("Mail Adresiniz")
+    <input type="text" asp-for="Mail" class="form-control" />
+    @Html.ValidationMessage("Mail")
+    <br />
+    @Html.Label("Şifre")
+    <input type="password" asp-for="Password" class="form-control" />
+    @Html.ValidationMessage("Password")
+    <br />
+    @Html.Label("Şifre Tekrar")
+    <input type="password" asp-for="ComfirmPassword" class="form-control" />
+    @Html.ValidationMessage("ComfirmPassword")
+    <br />
+    <button class="btn btn-success"> Değişiklikeri kaydet</button>
+
+</form>

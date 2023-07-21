@@ -1,0 +1,46 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Mesaj Detayı</h1>
+
+<div class="p-2 m-2">
+<table class="table table-bordered">
+    <tr>
+        <td class="fw-bold w-25">Mesaj Id:</td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td class="fw-bold">İsim:</td>
+        <td>@Model.Name</td>
+    </tr>
+    
+    <tr>
+            <td class="fw-bold">Email:</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+            <td class="fw-bold">Telefon Numarası:</td>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+    <tr>
+            <td class="fw-bold">Tarih:</td>
+        <td>@Model.DateTime</td>
+    </tr>
+    <tr>
+            <td class="fw-bold">Ip Adres:</td>
+        <td>@Model.UserIp</td>
+    </tr>
+    <tr>
+            <td class="fw-bold h-auto">Mesaj:</td>
+        <td><p>@Model.MessageText</p></td>
+    </tr>   
+</table>
+    <a asp-action="Index" asp-controller="Message" class="btn btn-secondary">Geri Dön</a>
+    @if(Model.IsRead==false){
+    <input type="hidden" id="IsRead" name="IsRead" value="True">
+    <a asp-action="IsReadMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Okundu İşaretle</a>
+    }
+    
+</div>

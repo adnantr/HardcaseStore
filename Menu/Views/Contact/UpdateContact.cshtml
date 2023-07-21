@@ -1,0 +1,47 @@
+﻿
+@model Contact
+@{
+    ViewData["Title"] = "UpdateContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>İletişim Güncelleme</h1>
+
+<form method="post">
+    @Html.HiddenFor(x=>x.id)
+    <div class="form-group">
+        @Html.Label("Adres")
+        <span asp-validation-for="Address" class="text-danger"></span>
+        <input type="textarea" asp-for="Address" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama")
+        <span asp-validation-for="Info" class="text-danger"></span>
+        <input type="textarea" asp-for="Info" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Telefon No")
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Mail")
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Harita")
+        <span asp-validation-for="Map" class="text-danger"></span>
+        <input type="textarea" asp-for="Map" class="form-control" />
+    </div>
+    <br />
+
+    <button class="btn btn-success">Değişiklikleri Kaydet</button>
+    <a asp-controller="Contact" asp-action="Index" class="btn btn-secondary" role="button">Geri Dön</a>
+</form>
+
+
+

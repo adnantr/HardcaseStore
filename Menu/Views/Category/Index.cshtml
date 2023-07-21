@@ -1,0 +1,52 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="bi bi-exclamation-octagon"></i>
+        @TempData["message"]
+    </div>
+}
+<a href="/Category/AddCategory" class="btn btn-outline-primary"> Yeni Kategori Girişi</a>
+
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Sıra numarası</th>
+            <th>Kategori İsmi</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Serial</td>
+                <td>@item.Name</td>
+                <td><a href="/Category/DeleteCategory/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                <td><a href="/Category/UpdateCategory/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+

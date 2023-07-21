@@ -1,0 +1,83 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout_padding-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+               @* <div class="img_box">*@
+
+                 <!--başla-->
+
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            @if (String.IsNullOrEmpty(Model.Image))
+                            {
+                                <img src="~/alkutay/icon/yok.png" class="d-block w-100" style="height:400px">
+                            }
+                            else
+                            {
+                            <img src="~/alkutay/images/@Model.Image" class="d-block w-100" style="height:400px">
+                            }
+                        </div>
+                        <div class="carousel-item">
+                            @if (String.IsNullOrEmpty(Model.ImageOne))
+                            {
+                                <img src="~/alkutay/icon/yok.png" class="d-block w-100" style="height:400px">
+                            }
+                            else
+                            {
+                                <img src="~/alkutay/images/@Model.ImageOne" class="d-block w-100" style="height:400px">
+                            }
+                        </div>
+                        <div class="carousel-item">
+                            @if (String.IsNullOrEmpty(Model.ImageTwo))
+                            {
+                                <img src="~/alkutay/icon/yok.png" class="d-block w-100" style="height:400px">
+                            }
+                            else
+                            {
+                                <img src="~/alkutay/images/@Model.ImageTwo" class="d-block w-100" style="height:400px">
+                            }
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!--bitir-->
+                    
+                   @* <figure><img src="~/alkutay/icon/@Model.Image" alt="#" /></figure>*@
+               @* </div>*@
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 product_detail_side">
+                <div class="abotext_box">
+                    <div class="product-heading">
+                        <h2>@Model.Name</h2>
+                    </div>
+                    <div class="detail-contant">
+                        @Html.Raw(@Model.Description)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#myTextarea',
+        valid_elements: 'p[style],strong,em'
+    });
+</script>

@@ -1,0 +1,60 @@
+﻿@using AlkutayUI.Models
+@model ProductImageModel
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Ürün Ekleme</h1>
+
+<form asp-controller="Product"  method="post" class="form-control" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text danger"></div>
+
+        <div class="form-group row mb-3">
+            <input asp-for="Name" placeholder="Ürün isim" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mb-3">
+        <textarea asp-for="Description" placeholder="Ürün tanım" class="form-control" id="myTextarea"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mb-3">
+            <input asp-for="Price" placeholder="Ürün Fiyat ₺" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Kategori</label>
+            <select asp-for="CategoryId" class="form-select" id="inputGroupSelect01">
+                <option selected>Kategori Seçiniz</option>
+                @foreach (var item in ViewBag.categorylist)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" asp-for="Image" class="form-control" id="inputGroupFile01">
+         </div>
+        <div class="input-group mb-3">
+            <input type="file" asp-for="ImageOne" class="form-control" id="inputGroupFile02">
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" asp-for="ImageTwo" class="form-control" id="inputGroupFile03">
+        </div>
+
+
+    <button type="submit" class="btn btn-success ">Ekle</button>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" role="button">Geri Dön</a>
+
+</form>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#myTextarea'
+    });
+</script>

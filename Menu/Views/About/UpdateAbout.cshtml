@@ -1,0 +1,34 @@
+﻿@using AlkutayUI.Models
+@model ImageAbout
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Hakkında Güncelleme</h1>
+<br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="bi bi-exclamation-octagon"></i>
+        @TempData["message"]
+    </div>
+}
+<form method="post" asp-controller="About" asp-action="UpdateAbout" enctype="multipart/form-data">
+    <span asp-validation-for="Image" class="text-danger"></span>
+    @Html.Label("Görsel")<br />
+    <div class="input-group mb-3">
+        <input type="file" asp-for="Image" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </div>
+    <br />
+    <span asp-validation-for="Text" class="text-danger"></span>
+    <div class="form-group">
+        @Html.Label("Açıklama")
+        <textarea id="w3review" asp-for="Text"  class="form-control name="w3review" rows="4" cols="50"></textarea>
+    </div>
+
+    <button class="btn btn-success">Değişiklikleri Kaydet</button>
+</form>
+

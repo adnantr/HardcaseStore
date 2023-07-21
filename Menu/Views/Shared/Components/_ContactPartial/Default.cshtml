@@ -1,0 +1,15 @@
+﻿@model List<Contact>
+<!-- CONTACT Section  -->
+
+
+@foreach (var item in Model)
+{
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 padddd">
+    <div class="map_section">
+        <div id="map">
+                <iframe src="@item.Map" class="col-xl-12 col-lg-12"  height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+
+}

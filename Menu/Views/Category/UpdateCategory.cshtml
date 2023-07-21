@@ -1,0 +1,31 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategori Güncelleme</h1>
+
+<form asp-controller="Category" asp-action="UpdateCategory" method="post" class="form-control">
+    <div asp-validation-summary="All" class="text danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group row mb-3">
+        <label>Kategori isim</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label>Kategori Sıra Numarası</label>
+        <input asp-for="Serial" class="form-control" />
+        <span asp-validation-for="Serial" class="text-danger"></span>
+    </div>
+
+    <button type="submit" asp-controller="Category" asp-action="UpdateCategory" class="btn btn-success ">Güncelle</button>
+    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" role="button">Geri Dön</a>
+
+</form>
+
+
+

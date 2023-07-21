@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_HeadPartial")
+<!-- body -->
+<body class="main-layout">
+<!-- loader  -->
+<div class="loader_bg">
+        <div class="loader"><img src="~/alkutay/images/Infinity-0.6s-251px.gif" alt="#" /></div>
+</div>
+<!-- end loader -->
+
+    <div class="wrapper">
+        @await Component.InvokeAsync("_SidebarPartial")
+        @await Component.InvokeAsync("_HeaderPartial")
+        @RenderBody()
+        <!--  footer -->
+        @await Component.InvokeAsync("_FooterPartial")
+        <!-- end footer -->
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Javascript files-->
+    <script src="~/alkutay/js/jquery.min.js"></script>
+    <script src="~/alkutay/js/popper.min.js"></script>
+    <script src="~/alkutay/js/bootstrap.bundle.min.js"></script>
+    <script src="~/alkutay/js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="~/alkutay/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/alkutay/js/custom.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>

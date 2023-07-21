@@ -1,0 +1,20 @@
+﻿
+<div class="sidebar">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+
+        <div id="dismiss">
+            <i class="fa fa-arrow-left"></i>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")"> <a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "AboutUs" ? "active" : "")">  <a asp-controller="AboutUs" asp-action="Index">Hakkımızda</a></li>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Produce" ? "active" : "")"> <a asp-controller="Produce" asp-action="Index">Ürünler</a></li>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "ContactUs" ? "active" : "")"> <a asp-controller="ContactUs" asp-action="Index">İletişim</a></li>
+
+        </ul>
+
+    </nav>
+</div>

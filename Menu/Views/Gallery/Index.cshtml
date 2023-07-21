@@ -1,0 +1,36 @@
+﻿@model List<Gallery>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="card-title"> Görseller </h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Görsel</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td class="py-1">
+                <img src="~/alkutay/images/@item.Image" width="100" height="100" />
+            </td>
+            <td>
+                <a href="/Gallery/DeleteGallery/@item.id" class="btn btn-outline-danger">Sil</a>
+            </td>
+            <td>
+                <a href="/Gallery/UpdateGallery/@item.id" class="btn btn-outline-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Gallery/AddGallery" class="btn btn-outline-primary"> Yeni Görsel Girişi</a>
+
+

@@ -1,0 +1,34 @@
+﻿@model Message
+
+<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 padddd">
+    <form method="post" class="main_form">
+        <div class="row">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="IsRead" value="False" />
+            <input type="hidden" asp-for="UserIp" id="ipAddress" />
+            <input type="hidden" asp-for="DateTime" value="@DateTime.Now" />
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <input asp-for="Name" class="form-control" placeholder="İsim" type="text" name="Name">
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <input asp-for="Email" class="form-control" placeholder="Email" type="text" name="Email">
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="+90(___)______" type="text" name="PhoneNumber">
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <textarea asp-for="MessageText" class="textarea" placeholder="Mesajınız" type="text" name="MessageText"></textarea>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <button type="submit" asp-controller="Message" asp-action="AddMessage" class="send">Gönder</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Kullanıcının IP adresini almak için JavaScript kullanımı
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => document.getElementById('ipAddress').value = data.ip);
+</script>
